@@ -41,11 +41,11 @@ export class NavigationPage {
     await this.toolTipMenuItem.click({ force: true });
   }
 
-  private async selectGroupMenuItem(groupItemtiltle: string) {
-    const groupItem = this.page.getByTitle(groupItemtiltle);
+  private async selectGroupMenuItem(groupItemtitlle: string) {
+    const groupItem = this.page.getByTitle(groupItemtitlle);
     const expandedState = await groupItem.getAttribute("aria-expanded");
 
-    if (expandedState == "false") {
+    if (expandedState != "true") {
       await groupItem.click();
     }
   }

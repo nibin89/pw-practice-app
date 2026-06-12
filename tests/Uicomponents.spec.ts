@@ -89,7 +89,7 @@ test("list amd dropdowns", async ({ page }) => {
   );
   await optionList.filter({ hasText: "Cosmic" }).click();
 });
-test.only("Dialog box test", async ({ page }) => {
+test("Dialog box test", async ({ page }) => {
   await page.getByText("Tables & Data").click();
   await page.getByText("Smart Table").click();
 
