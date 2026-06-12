@@ -1,7 +1,7 @@
 import { Locator, Page } from "@playwright/test";
+import { HelperBase } from "./helperBase";
 
-export class NavigationPage {
-  readonly page: Page;
+export class NavigationPage extends HelperBase {
   readonly formLayoutMenuItem: Locator;
   readonly datePickerMenuItem: Locator;
   readonly smartTableMenuItem: Locator;
@@ -9,7 +9,7 @@ export class NavigationPage {
   readonly toolTipMenuItem: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.formLayoutMenuItem = page.getByRole("link", { name: "Form Layouts" });
     this.datePickerMenuItem = page.getByRole("link", { name: "Datepicker" });
     this.smartTableMenuItem = page.getByRole("link", { name: "Smart Table" });
@@ -20,6 +20,7 @@ export class NavigationPage {
   async formLayoutsPage() {
     await this.selectGroupMenuItem("Forms");
     await this.formLayoutMenuItem.click({ force: true });
+    await this.waitForNumberodSeconds(2);
   }
 
   async datePickerPage() {
