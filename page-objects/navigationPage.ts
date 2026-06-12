@@ -10,16 +10,16 @@ export class NavigationPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.formLayoutMenuItem = page.getByText("Form Layouts");
-    this.datePickerMenuItem = page.getByText("Datepicker");
-    this.smartTableMenuItem = page.getByText("Smart Table");
-    this.toastrMenuItem = page.getByText("Toastr");
-    this.toolTipMenuItem = page.getByText("Tooltip");
+    this.formLayoutMenuItem = page.getByRole("link", { name: "Form Layouts" });
+    this.datePickerMenuItem = page.getByRole("link", { name: "Datepicker" });
+    this.smartTableMenuItem = page.getByRole("link", { name: "Smart Table" });
+    this.toastrMenuItem = page.getByRole("link", { name: "Toastr" });
+    this.toolTipMenuItem = page.getByRole("link", { name: "Tooltip" });
   }
 
   async formLayoutsPage() {
     await this.selectGroupMenuItem("Forms");
-    await this.datePickerMenuItem.click({ force: true });
+    await this.formLayoutMenuItem.click({ force: true });
   }
 
   async datePickerPage() {
@@ -43,7 +43,7 @@ export class NavigationPage {
 
   private async selectGroupMenuItem(groupItemtiltle: string) {
     const groupItem = this.page.getByTitle(groupItemtiltle);
-    const expandedState = await groupItem.getAttribute("aria-exapanded");
+    const expandedState = await groupItem.getAttribute("aria-expanded");
 
     if (expandedState == "false") {
       await groupItem.click();
